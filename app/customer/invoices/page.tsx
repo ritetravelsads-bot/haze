@@ -405,8 +405,8 @@ export default function CustomerInvoicesPage() {
                             <TableCell>
                               <div className="flex items-center gap-1">
                                 <Calendar className="h-4 w-4 text-muted-foreground" />
-                                {format(new Date(request.date_from), "MMM d")} -{" "}
-                                {format(new Date(request.date_to), "MMM d, yyyy")}
+                                {format(new Date(request.date_range_start), "MMM d")} -{" "}
+                                {format(new Date(request.date_range_end), "MMM d, yyyy")}
                               </div>
                             </TableCell>
                             <TableCell>{getStatusBadge(request.status)}</TableCell>
