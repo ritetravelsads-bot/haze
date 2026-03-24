@@ -244,12 +244,35 @@ export default function CustomerDashboard() {
                       </CardHeader>
                       <CardContent>
                         <div className="space-y-3">
-                          <div className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
-                            <div className="flex items-center gap-3">
-                              <div className="h-2 w-2 rounded-full bg-warning" />
-                              <span className="text-sm">No recent tickets</span>
+                          {stats?.recentTickets?.length > 0 ? (
+                            stats.recentTickets.map((ticket: any) => (
+                              <div key={ticket.id} className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
+                                <div className="flex items-center gap-3">
+                                  <div className={cn(
+                                    "h-2 w-2 rounded-full",
+                                    ticket.status === "open" ? "bg-warning" :
+                                    ticket.status === "in_progress" ? "bg-primary" :
+                                    ticket.status === "closed" ? "bg-success" : "bg-muted"
+                                  )} />
+                                  <div className="flex flex-col">
+                                    <span className="text-sm font-medium">{ticket.ticketNumber}</span>
+                                    <span className="text-xs text-muted-foreground truncate max-w-[150px]">{ticket.title}</span>
+                                  </div>
+                                </div>
+                                <Badge variant="outline" className={
+                                  ticket.status === "open" ? "status-open" :
+                                  ticket.status === "in_progress" ? "status-in-progress" :
+                                  ticket.status === "closed" ? "status-resolved" : ""
+                                }>
+                                  {ticket.status.replace("_", " ")}
+                                </Badge>
+                              </div>
+                            ))
+                          ) : (
+                            <div className="flex items-center justify-between py-2">
+                              <span className="text-sm text-muted-foreground">No recent tickets</span>
                             </div>
-                          </div>
+                          )}
                         </div>
                         <Button asChild variant="outline" className="w-full mt-4 gap-2">
                           <Link href="/customer/tickets/create">

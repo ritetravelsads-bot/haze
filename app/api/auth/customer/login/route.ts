@@ -97,6 +97,7 @@ export async function POST(request: Request) {
       JSON.stringify({
         customerId: customer._id.toString(),
         email: customer.email,
+        fullName: customer.contact_person,
         companyName: customer.company_name,
         contactPerson: customer.contact_person,
         role: "customer_admin",

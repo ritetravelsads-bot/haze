@@ -29,7 +29,7 @@ export async function GET(request: Request) {
       if (search) {
         query.$or = [
           { name: { $regex: search, $options: "i" } },
-          { productCode: { $regex: search, $options: "i" } },
+          { product_code: { $regex: search, $options: "i" } },
           { brand: { $regex: search, $options: "i" } },
           { model: { $regex: search, $options: "i" } },
         ]
@@ -38,28 +38,28 @@ export async function GET(request: Request) {
       const products = await Product.find(query).sort({ name: 1 }).lean()
 
       // Get category info and merge with assignment data
-      const categoryIds = products.map((p: any) => p.categoryId).filter(Boolean)
+      const categoryIds = products.map((p: any) => p.category_id).filter(Boolean)
       const categories = await ProductCategory.find({ _id: { $in: categoryIds } }).lean()
       const categoryMap = new Map(categories.map((c: any) => [c._id.toString(), c]))
 
       const assignmentMap = new Map(assignments.map((a: any) => [a.product_id.toString(), a]))
 
       const transformed = products.map((p: any) => {
-        const category = categoryMap.get(p.categoryId?.toString())
+        const category = categoryMap.get(p.category_id?.toString())
         const assignment = assignmentMap.get(p._id.toString())
         return {
           id: p._id.toString(),
-          product_code: p.productCode,
+          product_code: p.product_code,
           name: p.name,
           description: p.description,
-          category_id: p.categoryId,
+          category_id: p.category_id,
           brand: p.brand,
           model: p.model,
-          serial_number: p.serialNumber,
+          serial_number: p.serial_number,
           specifications: p.specifications,
           status: p.status,
-          created_at: p.createdAt,
-          updated_at: p.updatedAt,
+          created_at: p.created_at,
+          updated_at: p.updated_at,
           category_name: (category as any)?.name,
           assigned_at: (assignment as any)?.assigned_at,
           assignment_notes: (assignment as any)?.notes,
@@ -78,27 +78,27 @@ export async function GET(request: Request) {
         
         const products = await Product.find({ _id: { $in: productIds } }).sort({ name: 1 }).lean()
         
-        const categoryIds = products.map((p: any) => p.categoryId).filter(Boolean)
+        const categoryIds = products.map((p: any) => p.category_id).filter(Boolean)
         const categories = await ProductCategory.find({ _id: { $in: categoryIds } }).lean()
         const categoryMap = new Map(categories.map((c: any) => [c._id.toString(), c]))
         const assignmentMap = new Map(assignments.map((a: any) => [a.product_id.toString(), a]))
 
         const transformed = products.map((p: any) => {
-          const category = categoryMap.get(p.categoryId?.toString())
+          const category = categoryMap.get(p.category_id?.toString())
           const assignment = assignmentMap.get(p._id.toString())
           return {
             id: p._id.toString(),
-            product_code: p.productCode,
+            product_code: p.product_code,
             name: p.name,
             description: p.description,
-            category_id: p.categoryId,
+            category_id: p.category_id,
             brand: p.brand,
             model: p.model,
-            serial_number: p.serialNumber,
+            serial_number: p.serial_number,
             specifications: p.specifications,
             status: p.status,
-            created_at: p.createdAt,
-            updated_at: p.updatedAt,
+            created_at: p.created_at,
+            updated_at: p.updated_at,
             category_name: (category as any)?.name,
             assigned_at: (assignment as any)?.assigned_at,
             assignment_notes: (assignment as any)?.notes,
@@ -109,27 +109,27 @@ export async function GET(request: Request) {
       }
 
       // Get all catalog products
-      const products = await Product.find().sort({ createdAt: -1 }).lean()
+      const products = await Product.find().sort({ created_at: -1 }).lean()
       
-      const categoryIds = products.map((p: any) => p.categoryId).filter(Boolean)
+      const categoryIds = products.map((p: any) => p.category_id).filter(Boolean)
       const categories = await ProductCategory.find({ _id: { $in: categoryIds } }).lean()
       const categoryMap = new Map(categories.map((c: any) => [c._id.toString(), c]))
 
       const transformed = products.map((p: any) => {
-        const category = categoryMap.get(p.categoryId?.toString())
+        const category = categoryMap.get(p.category_id?.toString())
         return {
           id: p._id.toString(),
-          product_code: p.productCode,
+          product_code: p.product_code,
           name: p.name,
           description: p.description,
-          category_id: p.categoryId,
+          category_id: p.category_id,
           brand: p.brand,
           model: p.model,
-          serial_number: p.serialNumber,
+          serial_number: p.serial_number,
           specifications: p.specifications,
           status: p.status,
-          created_at: p.createdAt,
-          updated_at: p.updatedAt,
+          created_at: p.created_at,
+          updated_at: p.updated_at,
           category_name: (category as any)?.name,
         }
       })

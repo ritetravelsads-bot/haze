@@ -262,27 +262,32 @@ export default function TeamDashboard() {
                       </CardHeader>
                       <CardContent>
                         <div className="space-y-3">
-                          <div className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
-                            <div className="flex items-center gap-3">
-                              <div className="h-2 w-2 rounded-full bg-warning" />
-                              <span className="text-sm">TKT-001234</span>
+                          {stats?.recentTickets?.length > 0 ? (
+                            stats.recentTickets.map((ticket: any) => (
+                              <div key={ticket.id} className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
+                                <div className="flex items-center gap-3">
+                                  <div className={cn(
+                                    "h-2 w-2 rounded-full",
+                                    ticket.status === "open" ? "bg-warning" :
+                                    ticket.status === "in_progress" ? "bg-primary" :
+                                    ticket.status === "closed" ? "bg-success" : "bg-muted"
+                                  )} />
+                                  <span className="text-sm">{ticket.ticketNumber}</span>
+                                </div>
+                                <Badge variant="outline" className={
+                                  ticket.status === "open" ? "status-open" :
+                                  ticket.status === "in_progress" ? "status-in-progress" :
+                                  ticket.status === "closed" ? "status-resolved" : ""
+                                }>
+                                  {ticket.status.replace("_", " ")}
+                                </Badge>
+                              </div>
+                            ))
+                          ) : (
+                            <div className="flex items-center justify-between py-2">
+                              <span className="text-sm text-muted-foreground">No recent tickets</span>
                             </div>
-                            <Badge variant="outline" className="status-open">Open</Badge>
-                          </div>
-                          <div className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
-                            <div className="flex items-center gap-3">
-                              <div className="h-2 w-2 rounded-full bg-primary" />
-                              <span className="text-sm">TKT-001233</span>
-                            </div>
-                            <Badge variant="outline" className="status-in-progress">In Progress</Badge>
-                          </div>
-                          <div className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
-                            <div className="flex items-center gap-3">
-                              <div className="h-2 w-2 rounded-full bg-success" />
-                              <span className="text-sm">TKT-001232</span>
-                            </div>
-                            <Badge variant="outline" className="status-resolved">Resolved</Badge>
-                          </div>
+                          )}
                         </div>
                       </CardContent>
                     </Card>
@@ -295,21 +300,27 @@ export default function TeamDashboard() {
                             View all <ArrowUpRight className="h-3 w-3" />
                           </Link>
                         </div>
-                        <CardDescription>Most active this month</CardDescription>
+                        <CardDescription>Most active by tickets</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="space-y-3">
-                          {[1, 2, 3].map((i) => (
-                            <div key={i} className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
-                              <div className="flex items-center gap-3">
-                                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
-                                  <Users className="h-4 w-4 text-muted-foreground" />
+                          {stats?.recentCustomers?.length > 0 ? (
+                            stats.recentCustomers.map((customer: any) => (
+                              <div key={customer.id} className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
+                                <div className="flex items-center gap-3">
+                                  <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+                                    <Users className="h-4 w-4 text-muted-foreground" />
+                                  </div>
+                                  <span className="text-sm font-medium">{customer.companyName}</span>
                                 </div>
-                                <span className="text-sm font-medium">Customer {i}</span>
+                                <span className="text-xs text-muted-foreground">{customer.ticketCount} tickets</span>
                               </div>
-                              <span className="text-xs text-muted-foreground">{10 - i * 2} tickets</span>
+                            ))
+                          ) : (
+                            <div className="flex items-center justify-between py-2">
+                              <span className="text-sm text-muted-foreground">No customers yet</span>
                             </div>
-                          ))}
+                          )}
                         </div>
                       </CardContent>
                     </Card>
@@ -326,19 +337,35 @@ export default function TeamDashboard() {
                       </CardHeader>
                       <CardContent>
                         <div className="space-y-3">
-                          {[
-                            { action: "Ticket created", time: "2 min ago" },
-                            { action: "Customer updated", time: "5 min ago" },
-                            { action: "Product assigned", time: "12 min ago" },
-                          ].map((item, i) => (
-                            <div key={i} className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
-                              <div className="flex items-center gap-3">
-                                <Activity className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">{item.action}</span>
-                              </div>
-                              <span className="text-xs text-muted-foreground">{item.time}</span>
+                          {stats?.recentActivity?.length > 0 ? (
+                            stats.recentActivity.map((activity: any) => {
+                              const timeAgo = (date: string) => {
+                                const now = new Date()
+                                const past = new Date(date)
+                                const diffMs = now.getTime() - past.getTime()
+                                const diffMins = Math.floor(diffMs / 60000)
+                                if (diffMins < 1) return "Just now"
+                                if (diffMins < 60) return `${diffMins} min ago`
+                                const diffHours = Math.floor(diffMins / 60)
+                                if (diffHours < 24) return `${diffHours} hr ago`
+                                const diffDays = Math.floor(diffHours / 24)
+                                return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`
+                              }
+                              return (
+                                <div key={activity.id} className="flex items-center justify-between py-2 border-b border-dashed last:border-0">
+                                  <div className="flex items-center gap-3">
+                                    <Activity className="h-4 w-4 text-muted-foreground" />
+                                    <span className="text-sm capitalize">{activity.entityType} {activity.action}</span>
+                                  </div>
+                                  <span className="text-xs text-muted-foreground">{timeAgo(activity.createdAt)}</span>
+                                </div>
+                              )
+                            })
+                          ) : (
+                            <div className="flex items-center justify-between py-2">
+                              <span className="text-sm text-muted-foreground">No recent activity</span>
                             </div>
-                          ))}
+                          )}
                         </div>
                       </CardContent>
                     </Card>

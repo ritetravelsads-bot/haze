@@ -1,6 +1,7 @@
 import connectDB from "@/lib/mongodb"
 import Customer from "@/models/Customer"
 import CustomerAgentAssignment from "@/models/CustomerAgentAssignment"
+import CustomerUser from "@/models/CustomerUser"
 import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
 
@@ -30,6 +31,14 @@ export async function GET() {
         .populate("agent_id", "full_name")
         .lean()
 
+      // Get user counts for all assigned customers
+      const customerIds = assignments.map((a: any) => a.customer_id._id)
+      const userCounts = await CustomerUser.aggregate([
+        { $match: { customer_id: { $in: customerIds } } },
+        { $group: { _id: "$customer_id", count: { $sum: 1 } } }
+      ])
+      const userCountMap = new Map(userCounts.map((u: any) => [u._id.toString(), u.count]))
+
       customers = assignments.map((a: any) => ({
         id: a.customer_id._id.toString(),
         company_name: a.customer_id.company_name,
@@ -40,6 +49,7 @@ export async function GET() {
         is_active: a.customer_id.is_active,
         agent_id: a.agent_id?._id?.toString(),
         assigned_to: a.agent_id?.full_name,
+        user_count: userCountMap.get(a.customer_id._id.toString()) || 0,
       }))
     } else {
       // Super admin, admin, manager see all customers
@@ -49,9 +59,15 @@ export async function GET() {
 
       // Get assignments for each customer
       const customerIds = allCustomers.map((c: any) => c._id)
-      const assignments = await CustomerAgentAssignment.find({ customer_id: { $in: customerIds } })
-        .populate("agent_id", "full_name")
-        .lean()
+      const [assignments, userCounts] = await Promise.all([
+        CustomerAgentAssignment.find({ customer_id: { $in: customerIds } })
+          .populate("agent_id", "full_name")
+          .lean(),
+        CustomerUser.aggregate([
+          { $match: { customer_id: { $in: customerIds } } },
+          { $group: { _id: "$customer_id", count: { $sum: 1 } } }
+        ])
+      ])
 
       const assignmentMap = new Map()
       assignments.forEach((a: any) => {
@@ -60,6 +76,8 @@ export async function GET() {
           assigned_to: a.agent_id?.full_name,
         })
       })
+
+      const userCountMap = new Map(userCounts.map((u: any) => [u._id.toString(), u.count]))
 
       customers = allCustomers.map((c: any) => ({
         id: c._id.toString(),
@@ -71,6 +89,7 @@ export async function GET() {
         is_active: c.is_active,
         agent_id: assignmentMap.get(c._id.toString())?.agent_id,
         assigned_to: assignmentMap.get(c._id.toString())?.assigned_to,
+        user_count: userCountMap.get(c._id.toString()) || 0,
       }))
     }
 

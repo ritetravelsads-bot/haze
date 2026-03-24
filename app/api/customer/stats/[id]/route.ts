@@ -1,5 +1,5 @@
 import { connectToDatabase } from "@/lib/mongodb"
-import { CustomerProduct, Ticket } from "@/models"
+import { CustomerProduct, Ticket, Product } from "@/models"
 import { NextResponse } from "next/server"
 import { cookies } from "next/headers"
 
@@ -25,11 +25,16 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     await connectToDatabase()
 
-    const [totalProducts, openTickets, inProgressTickets, closedTickets] = await Promise.all([
-      CustomerProduct.countDocuments({ customerId: id, isActive: true }),
-      Ticket.countDocuments({ customerId: id, status: "open" }),
-      Ticket.countDocuments({ customerId: id, status: "in_progress" }),
-      Ticket.countDocuments({ customerId: id, status: "closed" }),
+    const [totalProducts, openTickets, inProgressTickets, closedTickets, recentTickets] = await Promise.all([
+      CustomerProduct.countDocuments({ customer_id: id, isActive: true }),
+      Ticket.countDocuments({ customer_id: id, status: "open" }),
+      Ticket.countDocuments({ customer_id: id, status: "in_progress" }),
+      Ticket.countDocuments({ customer_id: id, status: "closed" }),
+      Ticket.find({ customer_id: id })
+        .sort({ created_at: -1 })
+        .limit(3)
+        .populate("product_id", "name productCode")
+        .lean(),
     ])
 
     return NextResponse.json({
@@ -37,6 +42,15 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       openTickets,
       inProgressTickets,
       closedTickets,
+      recentTickets: recentTickets.map((t: any) => ({
+        id: t._id.toString(),
+        ticketNumber: t.ticket_number,
+        title: t.title,
+        status: t.status,
+        priority: t.priority,
+        productName: t.product_id?.name || null,
+        createdAt: t.created_at,
+      })),
     })
   } catch (error) {
     console.error("[v0] Error fetching customer stats:", error)
@@ -46,6 +60,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
         openTickets: 0,
         inProgressTickets: 0,
         closedTickets: 0,
+        recentTickets: [],
       },
       { status: 200 },
     )
