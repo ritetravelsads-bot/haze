@@ -317,6 +317,7 @@ export function CustomerUsersList({ customerId, userRole }: CustomerUsersListPro
                     <SelectContent>
                       <SelectItem value="customer_admin">Customer Admin</SelectItem>
                       <SelectItem value="customer_agent">Customer Agent</SelectItem>
+                      <SelectItem value="customer_account">Customer Account</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -358,6 +359,7 @@ export function CustomerUsersList({ customerId, userRole }: CustomerUsersListPro
               <SelectItem value="all">All Roles</SelectItem>
               <SelectItem value="customer_admin">Admin</SelectItem>
               <SelectItem value="customer_agent">Agent</SelectItem>
+              <SelectItem value="customer_account">Account</SelectItem>
             </SelectContent>
           </Select>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -403,7 +405,7 @@ export function CustomerUsersList({ customerId, userRole }: CustomerUsersListPro
                     <TableCell className="hidden md:table-cell">{user.mobile_number}</TableCell>
                     <TableCell>
                       <Badge variant="outline">
-                        {user.role === "customer_admin" ? "Admin" : "Agent"}
+                        {user.role === "customer_admin" ? "Admin" : user.role === "customer_account" ? "Account" : "Agent"}
                       </Badge>
                     </TableCell>
                     <TableCell>

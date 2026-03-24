@@ -56,9 +56,9 @@ export default function CustomerInvoicesPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [formData, setFormData] = useState({
-    date_from: "",
-    date_to: "",
-    notes: "",
+    date_range_start: "",
+    date_range_end: "",
+    description: "",
   })
 
   const isAdmin = customer?.role === "customer_user_admin"
@@ -110,7 +110,7 @@ export default function CustomerInvoicesPage() {
   }
 
   const handleSubmitRequest = async () => {
-    if (!formData.date_from || !formData.date_to) {
+    if (!formData.date_range_start || !formData.date_range_end) {
       toast.error("Please select date range")
       return
     }
@@ -127,7 +127,7 @@ export default function CustomerInvoicesPage() {
         const newRequest = await response.json()
         setRequests((prev) => [newRequest, ...prev])
         setIsDialogOpen(false)
-        setFormData({ date_from: "", date_to: "", notes: "" })
+        setFormData({ date_range_start: "", date_range_end: "", description: "" })
         toast.success("Invoice request submitted successfully")
       } else {
         const error = await response.json()
@@ -274,30 +274,30 @@ export default function CustomerInvoicesPage() {
                   <div className="space-y-4 py-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="date_from">From Date</Label>
+                        <Label htmlFor="date_range_start">From Date</Label>
                         <Input
-                          id="date_from"
+                          id="date_range_start"
                           type="date"
-                          value={formData.date_from}
-                          onChange={(e) => setFormData({ ...formData, date_from: e.target.value })}
+                          value={formData.date_range_start}
+                          onChange={(e) => setFormData({ ...formData, date_range_start: e.target.value })}
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="date_to">To Date</Label>
+                        <Label htmlFor="date_range_end">To Date</Label>
                         <Input
-                          id="date_to"
+                          id="date_range_end"
                           type="date"
-                          value={formData.date_to}
-                          onChange={(e) => setFormData({ ...formData, date_to: e.target.value })}
+                          value={formData.date_range_end}
+                          onChange={(e) => setFormData({ ...formData, date_range_end: e.target.value })}
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="notes">Notes (optional)</Label>
+                      <Label htmlFor="description">Notes (optional)</Label>
                       <Textarea
-                        id="notes"
-                        value={formData.notes}
-                        onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                        id="description"
+                        value={formData.description}
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                         placeholder="Any specific details or requirements..."
                       />
                     </div>

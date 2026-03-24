@@ -17,6 +17,7 @@ export const INVOICE_REQUEST_STATUS = {
 export const CUSTOMER_ROLES = {
   CUSTOMER_ADMIN: "customer_admin",
   CUSTOMER_AGENT: "customer_agent",
+  CUSTOMER_ACCOUNT: "customer_account",
 } as const
 
 export const TICKET_STATUS = {

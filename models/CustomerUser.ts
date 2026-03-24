@@ -7,7 +7,7 @@ export interface ICustomerUser extends Document {
   password_hash: string
   full_name: string
   mobile_number: string
-  role: "customer_admin" | "customer_agent"
+  role: "customer_admin" | "customer_agent" | "customer_account"
   is_active: boolean
   created_at: Date
   updated_at: Date
@@ -42,7 +42,7 @@ const CustomerUserSchema = new Schema<ICustomerUser>(
     },
     role: {
       type: String,
-      enum: ["customer_admin", "customer_agent"],
+      enum: ["customer_admin", "customer_agent", "customer_account"],
       required: true,
     },
     is_active: {
