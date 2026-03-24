@@ -25,16 +25,18 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     await connectToDatabase()
 
-    const [totalProducts, openTickets, resolvedTickets] = await Promise.all([
+    const [totalProducts, openTickets, inProgressTickets, closedTickets] = await Promise.all([
       CustomerProduct.countDocuments({ customerId: id, isActive: true }),
       Ticket.countDocuments({ customerId: id, status: "open" }),
-      Ticket.countDocuments({ customerId: id, status: "resolved" }),
+      Ticket.countDocuments({ customerId: id, status: "in_progress" }),
+      Ticket.countDocuments({ customerId: id, status: "closed" }),
     ])
 
     return NextResponse.json({
       totalProducts,
       openTickets,
-      resolvedTickets,
+      inProgressTickets,
+      closedTickets,
     })
   } catch (error) {
     console.error("[v0] Error fetching customer stats:", error)
@@ -42,7 +44,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       {
         totalProducts: 0,
         openTickets: 0,
-        resolvedTickets: 0,
+        inProgressTickets: 0,
+        closedTickets: 0,
       },
       { status: 200 },
     )

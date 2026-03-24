@@ -18,13 +18,13 @@ export async function GET() {
       totalCustomers,
       openTickets,
       inProgressTickets,
-      resolvedTickets,
+      closedTickets,
       totalProducts,
     ] = await Promise.all([
       Customer.countDocuments({ isActive: true }),
       Ticket.countDocuments({ status: "open" }),
       Ticket.countDocuments({ status: "in_progress" }),
-      Ticket.countDocuments({ status: "resolved" }),
+      Ticket.countDocuments({ status: "closed" }),
       Product.countDocuments({ status: "active" }),
     ])
 
@@ -32,7 +32,7 @@ export async function GET() {
       totalCustomers,
       openTickets,
       inProgressTickets,
-      resolvedTickets,
+      closedTickets,
       totalProducts,
     }
 

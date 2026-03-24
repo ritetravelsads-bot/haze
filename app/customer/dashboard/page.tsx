@@ -198,8 +198,8 @@ export default function CustomerDashboard() {
                   iconClassName="bg-chart-1/10 text-chart-1"
                 />
                 <StatCard
-                  title="Resolved"
-                  value={stats?.resolvedTickets || 0}
+                  title="Closed"
+                  value={stats?.closedTickets || 0}
                   description="Completed tickets"
                   icon={CheckCircle2}
                   iconClassName="bg-success/10 text-success"
