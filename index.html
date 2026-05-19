@@ -60,6 +60,10 @@
         /* Compact layout utilities */
         .dense-section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
         .thin-border { border: 1px solid rgba(180, 154, 91, 0.3); }
+
+        /* Hide scrollbar for gallery slider */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-[#fcfbf9] text-gray-800">
@@ -91,7 +95,7 @@
     <section class="relative h-[85vh] min-h-[600px] flex items-center justify-center">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=2574&auto=format&fit=crop" alt="Luxury Beachfront" class="w-full h-full object-cover" />
+            <img src="img/img385.jpg" alt="Luxury Beachfront" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/70 to-transparent"></div>
         </div>
 
@@ -170,7 +174,7 @@
                 <!-- 2 BHK Card -->
                 <div class="bg-white thin-border rounded-sm shadow-sm hover:shadow-md transition group overflow-hidden flex flex-col sm:flex-row">
                     <div class="sm:w-2/5 bg-gray-100 relative h-48 sm:h-auto">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="2 BHK Interior">
+                        <img src="img/img232.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="2 BHK Premium">
                         <div class="absolute inset-0 bg-navy-900/10"></div>
                     </div>
                     <div class="p-6 sm:w-3/5 flex flex-col justify-center">
@@ -201,7 +205,7 @@
                 <!-- 3 BHK Card -->
                 <div class="bg-white thin-border rounded-sm shadow-sm hover:shadow-md transition group overflow-hidden flex flex-col sm:flex-row">
                     <div class="sm:w-2/5 bg-gray-100 relative h-48 sm:h-auto">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="3 BHK Interior">
+                        <img src="img/img215.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="3 BHK Luxury">
                         <div class="absolute inset-0 bg-navy-900/10"></div>
                     </div>
                     <div class="p-6 sm:w-3/5 flex flex-col justify-center">
@@ -244,7 +248,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Amenity 1 -->
                 <div class="relative group h-64 overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Golf Course">
+                    <img src="img/img400.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Golf Course">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-4">
                         <i data-lucide="flag" class="text-gold-400 w-5 h-5 mb-2"></i>
@@ -255,36 +259,237 @@
                 
                 <!-- Amenity 2 -->
                 <div class="relative group h-64 overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1542314831-c6a4d1421045?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Podium">
+                    <img src="img/img291.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Beachfront Lifestyle">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-4">
-                        <i data-lucide="trees" class="text-gold-400 w-5 h-5 mb-2"></i>
-                        <h4 class="font-heading font-semibold text-white text-lg">7.5 Acre Podium</h4>
-                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">5 Landscaped Zones</p>
+                        <i data-lucide="waves" class="text-gold-400 w-5 h-5 mb-2"></i>
+                        <h4 class="font-heading font-semibold text-white text-lg">Beachfront Lifestyle</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">Exclusive Coastal Shacks</p>
                     </div>
                 </div>
 
                 <!-- Amenity 3 -->
                 <div class="relative group h-64 overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="High Street Retail">
+                    <img src="img/img238.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Grand Atriums">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-4">
-                        <i data-lucide="shopping-bag" class="text-gold-400 w-5 h-5 mb-2"></i>
-                        <h4 class="font-heading font-semibold text-white text-lg">Sunteck Beach Drive</h4>
-                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">International Hi-Street</p>
+                        <i data-lucide="building-2" class="text-gold-400 w-5 h-5 mb-2"></i>
+                        <h4 class="font-heading font-semibold text-white text-lg">Grand Atriums</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">Magnificent Architecture</p>
                     </div>
                 </div>
 
                 <!-- Amenity 4 -->
                 <div class="relative group h-64 overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Luxury Club">
+                    <img src="img/img241.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Infinity Pool">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-4">
                         <i data-lucide="glass-water" class="text-gold-400 w-5 h-5 mb-2"></i>
-                        <h4 class="font-heading font-semibold text-white text-lg">Grand Clubhouse</h4>
+                        <h4 class="font-heading font-semibold text-white text-lg">Luxury Club</h4>
                         <p class="text-[10px] text-gray-300 uppercase tracking-wide">Infinity Pool & Spa</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Image Slider -->
+    <section id="gallery" class="dense-section bg-[#fcfbf9] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-8 border-b border-gray-300 pb-4">
+                <div>
+                    <h2 class="text-xs text-gold-600 font-bold uppercase tracking-[0.2em] mb-2">The Coastal Life</h2>
+                    <h3 class="font-heading font-semibold text-3xl text-navy-900">Everyday by the Ocean</h3>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="prev-slide" class="w-10 h-10 border border-gold-500 flex items-center justify-center text-gold-600 hover:bg-gold-500 hover:text-white transition rounded-sm">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button id="next-slide" class="w-10 h-10 border border-gold-500 flex items-center justify-center text-gold-600 hover:bg-gold-500 hover:text-white transition rounded-sm">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="slider-container" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar pb-4">
+                <!-- Slide 1 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[50vw] lg:w-[30vw] h-[400px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img869.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Private Ocean Vistas">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Private Ocean Vistas</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">A Signature in the Sky</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[50vw] lg:w-[30vw] h-[400px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img817.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Sunset Dining">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Sunset Dining</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Curated Culinary Experiences</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[50vw] lg:w-[30vw] h-[400px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img609.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Coastal Wellness">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Coastal Wellness</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">A Seaside Pause for Peace</p>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[50vw] lg:w-[30vw] h-[400px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img677.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Adventure & Sports">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Adventure & Sports</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Dive into the Blue</p>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[50vw] lg:w-[30vw] h-[400px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img541.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Energizing Mornings">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Energizing Mornings</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Active Beachfront Lifestyle</p>
+                    </div>
+                </div>
+                <!-- Slide 6 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[50vw] lg:w-[30vw] h-[400px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img747.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Family Moments">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Family Moments</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Cherished Memories Everyday</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estate Masterplan Image Slider -->
+    <section id="project-gallery" class="dense-section bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-8 border-b border-gray-300 pb-4">
+                <div>
+                    <h2 class="text-xs text-gold-600 font-bold uppercase tracking-[0.2em] mb-2">Masterplan & Architecture</h2>
+                    <h3 class="font-heading font-semibold text-3xl text-navy-900">The Oceanopolis Estate</h3>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="prev-estate" class="w-10 h-10 border border-gold-500 flex items-center justify-center text-gold-600 hover:bg-gold-500 hover:text-white transition rounded-sm">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button id="next-estate" class="w-10 h-10 border border-gold-500 flex items-center justify-center text-gold-600 hover:bg-gold-500 hover:text-white transition rounded-sm">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="estate-slider-container" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar pb-4">
+                
+                <!-- Slide 1 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img513.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="The Coastal Legacy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">The Coastal Legacy</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">A Master-planned Beachfront Township</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img492.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Grand Courtyards & Club">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Grand Courtyards & Club</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Immersive Green Architecture</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img483.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Elevated Infinity Pool">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Elevated Infinity Pool</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">A Seamless Blend of Water and Sky</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img501.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Sunset Dining Lounge">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Sunset Dining Lounge</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Gourmet Experiences by the Water</p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img504.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Sunteck Beach Drive">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Sunteck Beach Drive</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">The Next International High Street</p>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img498.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="International Benchmarks">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">International Benchmarks</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Inspired by Miami, Dubai, & Beverly Hills</p>
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img507.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Elegant Interiors">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Elegant Interiors</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Curated Spaces for Social Indulgence</p>
+                    </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img482.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Podium Gardens">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Podium Gardens</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Lush Landscapes Uniting All Towers</p>
+                    </div>
+                </div>
+
+                <!-- Slide 9 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img444.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Central Parks">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Central Parks</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">A 23-Acre Haven of Open Spaces</p>
+                    </div>
+                </div>
+
+                <!-- Slide 10 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[350px] sm:h-[450px] relative rounded-sm overflow-hidden group">
+                    <img src="img/img443.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Serene Walkways">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="font-heading font-semibold text-white text-xl">Serene Walkways</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest mt-1">Discover Tranquility at Every Step</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -320,7 +525,7 @@
                     </ul>
                 </div>
                 <div class="relative h-[350px] lg:h-[450px] border border-gold-500/30 p-2 rounded-sm bg-navy-800">
-                    <img src="https://images.unsplash.com/photo-1548345680-f5475ea90f46?q=80&w=2074&auto=format&fit=crop" class="w-full h-full object-cover rounded-sm filter brightness-75" alt="Connectivity Map">
+                    <img src="img/img491.jpg" class="w-full h-full object-cover rounded-sm filter brightness-90" alt="Connectivity Map">
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="bg-navy-900/90 backdrop-blur border border-gold-500 text-center p-4 rounded-sm shadow-2xl">
                             <i data-lucide="navigation" class="w-6 h-6 text-gold-400 mx-auto mb-1"></i>
@@ -367,7 +572,7 @@
                         </div>
                     </div>
                     <div class="mt-8 relative z-10">
-                        <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1973&auto=format&fit=crop" class="h-24 w-full object-cover rounded-sm grayscale opacity-50" alt="Sunteck Realty">
+                        <img src="img/img228.jpg" class="h-24 w-full object-cover rounded-sm opacity-80" alt="Sunteck Realty">
                     </div>
                 </div>
 
@@ -460,6 +665,38 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Lifestyle Slider Logic
+        const sliderContainer = document.getElementById('slider-container');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+
+        if(sliderContainer && prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                const slideWidth = sliderContainer.firstElementChild.clientWidth;
+                sliderContainer.scrollBy({ left: -slideWidth - 16, behavior: 'smooth' }); // 16px for gap
+            });
+            nextBtn.addEventListener('click', () => {
+                const slideWidth = sliderContainer.firstElementChild.clientWidth;
+                sliderContainer.scrollBy({ left: slideWidth + 16, behavior: 'smooth' });
+            });
+        }
+
+        // Estate Masterplan Slider Logic
+        const estateSlider = document.getElementById('estate-slider-container');
+        const prevEstateBtn = document.getElementById('prev-estate');
+        const nextEstateBtn = document.getElementById('next-estate');
+
+        if(estateSlider && prevEstateBtn && nextEstateBtn) {
+            prevEstateBtn.addEventListener('click', () => {
+                const slideWidth = estateSlider.firstElementChild.clientWidth;
+                estateSlider.scrollBy({ left: -slideWidth - 16, behavior: 'smooth' });
+            });
+            nextEstateBtn.addEventListener('click', () => {
+                const slideWidth = estateSlider.firstElementChild.clientWidth;
+                estateSlider.scrollBy({ left: slideWidth + 16, behavior: 'smooth' });
+            });
+        }
 
         // ---------------------------------------------------------
         // EMAILJS INTEGRATION
