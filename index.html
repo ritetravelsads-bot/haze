@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunteck Beach Residences | Oceanopolis</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- EmailJS for secure client-side Gmail integration -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1a2332',
+                            900: '#0f172a',
+                        },
+                        gold: {
+                            300: '#e0c38c',
+                            400: '#c5a365',
+                            500: '#b49a5b',
+                            600: '#917943',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Montserrat', sans-serif; }
+        .gold-gradient { background: linear-gradient(135deg, #c5a365 0%, #917943 100%); }
+        .text-gold-gradient { 
+            background: linear-gradient(135deg, #e0c38c 0%, #b49a5b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #917943; }
+        
+        /* Compact layout utilities */
+        .dense-section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+        .thin-border { border: 1px solid rgba(180, 154, 91, 0.3); }
+    </style>
+</head>
+<body class="bg-[#fcfbf9] text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-navy-900/95 backdrop-blur border-b border-gold-500/20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="font-heading text-xl font-semibold tracking-wider text-gold-400">SBR</span>
+                    <span class="text-xs uppercase tracking-[0.2em] border-l border-gray-600 pl-2 text-gray-300 hidden sm:block">Oceanopolis</span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium tracking-wide">
+                    <a href="#overview" class="hover:text-gold-400 transition">Overview</a>
+                    <a href="#pricing" class="hover:text-gold-400 transition">Pricing</a>
+                    <a href="#amenities" class="hover:text-gold-400 transition">Lifestyle</a>
+                    <a href="#location" class="hover:text-gold-400 transition">Location</a>
+                </div>
+                <div>
+                    <a href="#contact" class="bg-gold-500 hover:bg-gold-600 text-white text-xs font-semibold py-2 px-4 uppercase tracking-wider transition rounded-sm">
+                        Submit EOI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-[85vh] min-h-[600px] flex items-center justify-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=2574&auto=format&fit=crop" alt="Luxury Beachfront" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/70 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start mt-12">
+            <span class="text-gold-400 text-xs font-semibold uppercase tracking-[0.3em] mb-3">Sunteck Beach Residences</span>
+            <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-4 max-w-2xl">
+                Mumbai's Luxury <br/>Beachfront Living.
+            </h1>
+            <p class="text-gray-200 text-sm md:text-base mb-6 max-w-xl leading-relaxed border-l-2 border-gold-500 pl-4">
+                The most exclusive phase of a 50-acre private estate. Uninterrupted sea views, a 9-acre golf course, and elite coastal living just 500 meters from Suruchi Beach, Vasai (W).
+            </p>
+            
+            <div class="bg-navy-900/80 backdrop-blur-md thin-border p-5 rounded-sm inline-block w-full max-w-md">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider">Priority Allotment</p>
+                        <p class="text-lg font-heading font-semibold text-white">Refundable EOI: ₹2 Lakhs</p>
+                    </div>
+                    <i data-lucide="shield-check" class="text-gold-400 w-6 h-6"></i>
+                </div>
+                <div class="grid grid-cols-2 gap-3 mb-4 text-xs text-gray-300">
+                    <div class="border border-white/10 p-2 rounded-sm bg-white/5">
+                        <span class="block text-gold-400 font-semibold mb-1">2 BHK Premium</span>
+                        From ₹ 1.08 Cr*
+                    </div>
+                    <div class="border border-white/10 p-2 rounded-sm bg-white/5">
+                        <span class="block text-gold-400 font-semibold mb-1">3 BHK Luxury</span>
+                        From ₹ 1.86 Cr*
+                    </div>
+                </div>
+                <a href="#contact" class="block w-full text-center bg-white text-navy-900 hover:bg-gold-500 hover:text-white transition text-xs font-bold py-3 uppercase tracking-wider rounded-sm">
+                    Express Interest
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight Bar -->
+    <div class="bg-navy-900 border-t border-b border-gold-500/30 text-white py-4 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x divide-gray-700">
+                <div class="px-2">
+                    <p class="text-gold-400 text-sm font-heading font-semibold mb-1">500 Mtrs</p>
+                    <p class="text-[10px] uppercase tracking-wider text-gray-400">From Suruchi Beach</p>
+                </div>
+                <div class="px-2">
+                    <p class="text-gold-400 text-sm font-heading font-semibold mb-1">50 Acres</p>
+                    <p class="text-[10px] uppercase tracking-wider text-gray-400">Private Coastal Estate</p>
+                </div>
+                <div class="px-2">
+                    <p class="text-gold-400 text-sm font-heading font-semibold mb-1">9 Acres</p>
+                    <p class="text-[10px] uppercase tracking-wider text-gray-400">Sea-Facing Golf Course</p>
+                </div>
+                <div class="px-2">
+                    <p class="text-gold-400 text-sm font-heading font-semibold mb-1">23 Acres</p>
+                    <p class="text-[10px] uppercase tracking-wider text-gray-400">Lush Open Greenery</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing & Configurations -->
+    <section id="pricing" class="dense-section bg-[#f9f8f6]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-gray-300 pb-4">
+                <div class="max-w-2xl">
+                    <h2 class="text-xs text-gold-600 font-bold uppercase tracking-[0.2em] mb-2">Curated Residences</h2>
+                    <h3 class="font-heading text-3xl font-semibold text-navy-900">Exclusive Pricing & Configurations</h3>
+                </div>
+                <div class="mt-4 md:mt-0 text-sm text-gray-500">
+                    <i data-lucide="info" class="inline w-4 h-4 mr-1 mb-0.5"></i> Uniform Pricing: ₹15,500 per sq.ft.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 2 BHK Card -->
+                <div class="bg-white thin-border rounded-sm shadow-sm hover:shadow-md transition group overflow-hidden flex flex-col sm:flex-row">
+                    <div class="sm:w-2/5 bg-gray-100 relative h-48 sm:h-auto">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="2 BHK Interior">
+                        <div class="absolute inset-0 bg-navy-900/10"></div>
+                    </div>
+                    <div class="p-6 sm:w-3/5 flex flex-col justify-center">
+                        <h4 class="font-heading text-xl font-semibold text-navy-900 mb-1">2 BHK Premium</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Oceanopolis Phase</p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                <span class="text-xs text-gray-500 flex items-center"><i data-lucide="maximize" class="w-3 h-3 mr-2 text-gold-500"></i> Carpet Area</span>
+                                <span class="text-sm font-medium text-gray-800">700 - 850 sq.ft.</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                <span class="text-xs text-gray-500 flex items-center"><i data-lucide="indian-rupee" class="w-3 h-3 mr-2 text-gold-500"></i> Rate</span>
+                                <span class="text-sm font-medium text-gray-800">₹ 15,500 psf</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase">Starting From</p>
+                                <p class="font-heading text-xl text-gold-600 font-semibold">₹ 1.08 Cr*</p>
+                            </div>
+                            <a href="#contact" class="border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white text-xs px-4 py-2 transition rounded-sm uppercase tracking-wider font-medium">Book EOI</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 BHK Card -->
+                <div class="bg-white thin-border rounded-sm shadow-sm hover:shadow-md transition group overflow-hidden flex flex-col sm:flex-row">
+                    <div class="sm:w-2/5 bg-gray-100 relative h-48 sm:h-auto">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="3 BHK Interior">
+                        <div class="absolute inset-0 bg-navy-900/10"></div>
+                    </div>
+                    <div class="p-6 sm:w-3/5 flex flex-col justify-center">
+                        <h4 class="font-heading text-xl font-semibold text-navy-900 mb-1">3 BHK Luxury</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Oceanopolis Phase</p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                <span class="text-xs text-gray-500 flex items-center"><i data-lucide="maximize" class="w-3 h-3 mr-2 text-gold-500"></i> Carpet Area</span>
+                                <span class="text-sm font-medium text-gray-800">1200 - 1400 sq.ft.</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                <span class="text-xs text-gray-500 flex items-center"><i data-lucide="indian-rupee" class="w-3 h-3 mr-2 text-gold-500"></i> Rate</span>
+                                <span class="text-sm font-medium text-gray-800">₹ 15,500 psf</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase">Starting From</p>
+                                <p class="font-heading text-xl text-gold-600 font-semibold">₹ 1.86 Cr*</p>
+                            </div>
+                            <a href="#contact" class="border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white text-xs px-4 py-2 transition rounded-sm uppercase tracking-wider font-medium">Book EOI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities & Lifestyle -->
+    <section id="amenities" class="dense-section bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 max-w-2xl mx-auto">
+                <h2 class="text-xs text-gold-600 font-bold uppercase tracking-[0.2em] mb-2">The Estate</h2>
+                <h3 class="font-heading font-semibold text-3xl text-navy-900 mb-4">A Realm of the Truly Extraordinary</h3>
+                <p class="text-sm text-gray-600">Built to perform long after others peak. Crafted with enduring design, robust construction, and timeless appeal, reserved for the exceptional few.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Amenity 1 -->
+                <div class="relative group h-64 overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Golf Course">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <i data-lucide="flag" class="text-gold-400 w-5 h-5 mb-2"></i>
+                        <h4 class="font-heading font-semibold text-white text-lg">9-Acre Golf Course</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">Sweeping Sea Views</p>
+                    </div>
+                </div>
+                
+                <!-- Amenity 2 -->
+                <div class="relative group h-64 overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1542314831-c6a4d1421045?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Podium">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <i data-lucide="trees" class="text-gold-400 w-5 h-5 mb-2"></i>
+                        <h4 class="font-heading font-semibold text-white text-lg">7.5 Acre Podium</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">5 Landscaped Zones</p>
+                    </div>
+                </div>
+
+                <!-- Amenity 3 -->
+                <div class="relative group h-64 overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="High Street Retail">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <i data-lucide="shopping-bag" class="text-gold-400 w-5 h-5 mb-2"></i>
+                        <h4 class="font-heading font-semibold text-white text-lg">Sunteck Beach Drive</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">International Hi-Street</p>
+                    </div>
+                </div>
+
+                <!-- Amenity 4 -->
+                <div class="relative group h-64 overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Luxury Club">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <i data-lucide="glass-water" class="text-gold-400 w-5 h-5 mb-2"></i>
+                        <h4 class="font-heading font-semibold text-white text-lg">Grand Clubhouse</h4>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-wide">Infinity Pool & Spa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Connectivity -->
+    <section id="location" class="dense-section bg-navy-900 text-white border-t border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h2 class="text-xs text-gold-400 font-bold uppercase tracking-[0.2em] mb-2">Location</h2>
+                    <h3 class="font-heading font-semibold text-3xl mb-4">When World-Class Connectivity Arrives, City Limits Disappear.</h3>
+                    <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                        Strategically located at Vasai (W), a hub of proximities and a haven of calm. As the Coastal Road approaches SBR, it presents an unprecedented investment opportunity with high appreciation potential.
+                    </p>
+                    
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-start">
+                            <i data-lucide="map-pin" class="text-gold-400 w-4 h-4 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>500 Meters</strong> to pristine Suruchi Beach.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="ship" class="text-gold-400 w-4 h-4 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>Daily 16 RoRo</strong> ferry services between Bhayandar and Vasai.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="train-track" class="text-gold-400 w-4 h-4 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>Vasai-Diva-Roha Line</strong> links Western, Central, and Harbour lines.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="route" class="text-gold-400 w-4 h-4 mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>Coastal Road Edge:</strong> 25 mins from Versova, 40 mins from Airport.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative h-[350px] lg:h-[450px] border border-gold-500/30 p-2 rounded-sm bg-navy-800">
+                    <img src="https://images.unsplash.com/photo-1548345680-f5475ea90f46?q=80&w=2074&auto=format&fit=crop" class="w-full h-full object-cover rounded-sm filter brightness-75" alt="Connectivity Map">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="bg-navy-900/90 backdrop-blur border border-gold-500 text-center p-4 rounded-sm shadow-2xl">
+                            <i data-lucide="navigation" class="w-6 h-6 text-gold-400 mx-auto mb-1"></i>
+                            <p class="font-heading font-semibold text-lg text-white">Vasai West</p>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Mumbai's Coastal Frontier</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="contact" class="dense-section bg-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white shadow-xl thin-border flex flex-col md:flex-row overflow-hidden rounded-sm">
+                
+                <!-- Left Details -->
+                <div class="md:w-5/12 bg-navy-900 p-8 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500 rounded-bl-full opacity-10"></div>
+                    <div class="relative z-10">
+                        <h3 class="font-heading font-semibold text-2xl mb-2 text-gold-400">Secure Your Legacy</h3>
+                        <p class="text-sm text-gray-300 mb-6">Submit your Expression of Interest (EOI) today to guarantee priority allotment at lowest pre-launch pricing.</p>
+                        
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full border border-gold-500/50 flex items-center justify-center mr-3">
+                                    <i data-lucide="tag" class="w-4 h-4 text-gold-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase">EOI Amount</p>
+                                    <p class="font-medium">₹ 2,000,000 (Fully Refundable)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full border border-gold-500/50 flex items-center justify-center mr-3">
+                                    <i data-lucide="building" class="w-4 h-4 text-gold-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase">Developer</p>
+                                    <p class="font-medium">Sunteck Realty (Zero Net Debt)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1973&auto=format&fit=crop" class="h-24 w-full object-cover rounded-sm grayscale opacity-50" alt="Sunteck Realty">
+                    </div>
+                </div>
+
+                <!-- Right Form -->
+                <div class="md:w-7/12 p-8">
+                    <h4 class="font-heading font-semibold text-xl text-navy-900 mb-4">Register Interest</h4>
+                    
+                    <!-- 
+                        DEVELOPER NOTE FOR EMAILJS:
+                        1. Sign up at https://www.emailjs.com/
+                        2. Connect your Gmail in EmailJS (Add New Service).
+                        3. Create an Email Template.
+                        4. Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_PUBLIC_KEY' below in the JS script.
+                    -->
+                    <form id="eoi-form" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Full Name *</label>
+                                <input type="text" name="user_name" required class="w-full border-b border-gray-300 py-2 text-sm bg-transparent focus:outline-none focus:border-gold-500 transition placeholder-gray-400" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Phone Number *</label>
+                                <input type="tel" name="user_phone" required class="w-full border-b border-gray-300 py-2 text-sm bg-transparent focus:outline-none focus:border-gold-500 transition placeholder-gray-400" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Email Address *</label>
+                            <input type="email" name="user_email" required class="w-full border-b border-gray-300 py-2 text-sm bg-transparent focus:outline-none focus:border-gold-500 transition placeholder-gray-400" placeholder="john@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-2">Interested Configuration</label>
+                            <div class="flex space-x-4">
+                                <label class="flex items-center text-sm cursor-pointer">
+                                    <input type="radio" name="configuration" value="2BHK" class="mr-2 text-gold-500 focus:ring-gold-500 border-gray-300" checked>
+                                    2 BHK Premium
+                                </label>
+                                <label class="flex items-center text-sm cursor-pointer">
+                                    <input type="radio" name="configuration" value="3BHK" class="mr-2 text-gold-500 focus:ring-gold-500 border-gray-300">
+                                    3 BHK Luxury
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" id="submit-btn" class="w-full bg-navy-900 hover:bg-gold-500 text-white font-semibold py-3 text-sm uppercase tracking-widest transition flex justify-center items-center rounded-sm">
+                                Submit EOI Application
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-gray-400 text-center mt-2">By submitting this form, you agree to be contacted by Sunteck authorized representatives.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-gray-400 border-t border-gray-800 text-xs py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-2 md:mb-0">
+                <span class="font-heading font-semibold text-lg text-gold-400 mr-2">SBR</span> © 2026 Sunteck Realty Ltd. All Rights Reserved.
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-gold-400 transition">Privacy Policy</a>
+                <a href="#" class="hover:text-gold-400 transition">Terms of Service</a>
+                <a href="#" class="hover:text-gold-400 transition">MahaRERA</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Luxury Message Modal -->
+    <div id="msg-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-navy-900/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white border border-gold-500/50 p-8 max-w-sm w-full rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-navy-900 transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="modal-icon" class="w-12 h-12 rounded-full bg-gold-50 flex items-center justify-center mb-4">
+                <i data-lucide="check" class="w-6 h-6 text-gold-600"></i>
+            </div>
+            <h3 id="modal-title" class="font-heading font-semibold text-xl text-navy-900 mb-2">Success</h3>
+            <p id="modal-message" class="text-sm text-gray-600 leading-relaxed mb-6">Your message goes here.</p>
+            <button onclick="closeModal()" class="w-full bg-navy-900 text-white text-xs uppercase tracking-wider py-2 font-medium hover:bg-gold-500 transition rounded-sm">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // ---------------------------------------------------------
+        // EMAILJS INTEGRATION
+        // To make this functional for production:
+        // 1. Replace 'YOUR_PUBLIC_KEY' with your EmailJS Public Key.
+        // 2. Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID'.
+        // ---------------------------------------------------------
+        
+        // emailjs.init("YOUR_PUBLIC_KEY"); // UNCOMMENT AND ADD KEY HERE
+
+        const form = document.getElementById('eoi-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Visual feedback
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin mr-2"></i> Processing...';
+            lucide.createIcons();
+            submitBtn.disabled = true;
+
+            // --- SIMULATED OR REAL EMAIL SEND ---
+            
+            /* REAL IMPLEMENTATION (Uncomment and configure keys above):
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(function() {
+                    showModal("EOI Registered", "Thank you for your interest in Sunteck Beach Residences. Our luxury consultant will contact you shortly regarding your 2 Lakh EOI process.", true);
+                    form.reset();
+                }, function(error) {
+                    showModal("Submission Error", "We could not process your request at this moment. Please try again later.", false);
+                    console.log('FAILED...', error);
+                }).finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            */
+
+            // SIMULATED IMPLEMENTATION (For display purposes)
+            setTimeout(() => {
+                showModal(
+                    "EOI Registered Successfully", 
+                    "Thank you for your interest in Sunteck Beach Residences. Our luxury consultant will contact you shortly regarding the ₹2 Lakh refundable EOI process.",
+                    true
+                );
+                form.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('msg-modal');
+        const modalContainer = modal.querySelector('div');
+
+        function showModal(title, message, isSuccess) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            
+            const iconDiv = document.getElementById('modal-icon');
+            if(isSuccess) {
+                iconDiv.innerHTML = '<i data-lucide="check" class="w-6 h-6 text-gold-600"></i>';
+                iconDiv.className = 'w-12 h-12 rounded-full bg-gold-50 flex items-center justify-center mb-4';
+            } else {
+                iconDiv.innerHTML = '<i data-lucide="alert-circle" class="w-6 h-6 text-red-600"></i>';
+                iconDiv.className = 'w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-4';
+            }
+            lucide.createIcons();
+
+            modal.classList.remove('hidden');
+            // Small delay to allow display block to apply before transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContainer.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContainer.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
